@@ -4,32 +4,49 @@
 
 Install `create-hummingbird-app` globally using npm:
 
-\`\`\`bash
+```bash
 npm install -g create-hummingbird-app
-\`\`\`
+```
 
 ## Usage
 
 After installation, run the CLI command to create a new Node.js application:
 
-\`\`\`bash
+```bash
 create-hummingbird-app my-app
-\`\`\`
+```
 
 or, directly use
 
-\`\`\`bash
+```bash
 npx create-hummingbird-app my-app
-\`\`\`
+```
 
 or,
 
-\`\`\`bash
+```bash
 npx create-hummingbird-app -y
-\`\`\`
+```
+
+or, 
+
+```bash
+npx create-hummingbird-app -y my-app
+```
+
+or,
+```bash
+npx create-hummingbird-app -t vite-ts
+```
 
 or,
 
-\`\`\`bash
-npx create-hummingbird-app -t vite-ts
-\`\`\`
+```bash
+npx create-hummingbird-app -t vite-ts my-app
+```
+
+or,
+
+```bash
+npx create-hummingbird-app -y -t vite-ts
+```

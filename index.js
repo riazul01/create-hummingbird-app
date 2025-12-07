@@ -56,6 +56,10 @@ program
 
     let templateName = options.template;
 
+    if (options.yes) {
+      templateName = templateName || "vite-ts";
+    }
+
     if (!templateName) {
       const tailwindSetup = await safePrompt(
         select({
