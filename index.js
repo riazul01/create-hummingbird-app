@@ -28,13 +28,14 @@ async function safePrompt(promise) {
 }
 
 program
-  .version("1.0.0")
-  .argument("[project-name]", "Optional project name")
-  .option("-y, --yes", "Skip all prompts and use defaults")
+  .version("1.0.2")
+  .argument("[project-name]", "optional project name")
+  .option("-y, --yes", "skip all prompts and use defaults")
   .option(
     "-t, --template <template>",
-    "Select template (vite-ts, vite-js, postcss-ts, postcss-js)"
+    "select template (vite-ts, vite-js, postcss-ts, postcss-js)"
   )
+  .option("--ts", "force typescript template")
   .action(async (projectName, options) => {
     if (!projectName) {
       projectName = options.yes
@@ -54,22 +55,42 @@ program
       process.exit(1);
     }
 
-    let templateName = options.template;
+    let templateName = null;
 
-    if (options.yes) {
-      templateName = templateName || "vite-ts";
-    }
+    if (options.yes && options.ts) {
+      templateName = "vite-ts";
+      console.log(chalk.cyan(`Using default TS template: ${templateName}`));
+    } else if (options.yes && !options.ts) {
+      templateName = "vite-js";
+      console.log(chalk.cyan(`Using default JS template: ${templateName}`));
+    } else if (options.template) {
+      if (["vite", "postcss"].includes(options.template)) {
+        const variant = options.ts ? "ts" : "js";
+        templateName = `${options.template}-${variant}`;
+      } else {
+        templateName = options.template;
+      }
 
-    if (!templateName) {
+      console.log(chalk.cyan(`Using template: ${templateName}`));
+    } else if (options.ts && !options.yes) {
       const tailwindSetup = await safePrompt(
         select({
-          message: "Choose how you want to initialize Tailwind CSS:",
+          message: "Choose Tailwind setup:",
           choices: [
-            {
-              name: "Vite (recommended for modern JS frameworks)",
-              value: "vite",
-            },
+            { name: "Vite (recommended for modern JS frameworks)", value: "vite" },
             { name: "PostCSS (traditional build pipeline)", value: "postcss" },
+          ],
+        })
+      );
+
+      templateName = `${tailwindSetup}-ts`;
+    } else {
+      const tailwindSetup = await safePrompt(
+        select({
+          message: "Choose Tailwind setup:",
+          choices: [
+            { name: "Vite (recommended)", value: "vite" },
+            { name: "PostCSS (traditional)", value: "postcss" },
           ],
         })
       );
@@ -95,18 +116,15 @@ program
     }
 
     const spinner = ora("Copying template...").start();
-
     fs.copySync(templatePath, projectPath);
-
-    spinner.succeed("Template ready!");
+    spinner.succeed("Template copied!");
 
     process.chdir(projectPath);
-
     spinner.start("Installing dependencies...");
     execSync("npm install", { stdio: "inherit" });
     spinner.succeed("Dependencies installed!");
 
-    console.log(chalk.green(`Project ${projectName} is ready! 🚀`));
+    console.log(chalk.green(`\nProject '${projectName}' is ready! 🚀\n`));
   });
 
 program.parse(process.argv);
