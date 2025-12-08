@@ -14,6 +14,8 @@ A fast and flexible CLI tool to scaffold new projects using the **[Hummingbird U
   pnpm create hummingbird-app@latest
 ```
 
+<br/>
+
 ## Basic usage
 
 If you run the CLI without flags, it will guide you step-by-step:
@@ -121,6 +123,8 @@ This will output like this:
     -h, --help                 display help for command
 ```
 
+<br/>
+
 ## Template Matrix
 
 The following templates are available:
@@ -132,6 +136,7 @@ The following templates are available:
 | `postcss-js`  | PostCSS    | JavaScript | `-t postcss` or `-t postcss-js` |
 | `postcss-ts`  | PostCSS    | TypeScript | `-t postcss --ts` or `-t postcss-ts` |
 
+<br/>
 
 ## CLI Options
 
@@ -144,6 +149,7 @@ The following templates are available:
 | `--version` | `-V` | Show the CLI version | `npx create-hummingbird-app -V` |
 | `--help` | `-h` | Show help information | `npx create-hummingbird-app -h` |
 
+<br/>
 
 ## About
 
