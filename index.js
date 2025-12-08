@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
 import { Command } from "commander";
-import chalk from "chalk";
 import fs from "fs-extra";
 import path from "path";
+import chalk from "chalk";
 import ora from "ora";
 import select from "@inquirer/select";
 import input from "@inquirer/input";
@@ -28,7 +28,7 @@ async function safePrompt(promise) {
 }
 
 program
-  .version("1.0.2")
+  .version("1.0.5")
   .argument("[project-name]", "optional project name")
   .option("-y, --yes", "skip all prompts and use defaults")
   .option(
@@ -39,11 +39,11 @@ program
   .action(async (projectName, options) => {
     if (!projectName) {
       projectName = options.yes
-        ? "my-app"
+        ? "my-hummingbird-app"
         : await safePrompt(
             input({
               message: "What is your project named?",
-              default: "my-app",
+              default: "my-hummingbird-app",
             })
           );
     }
@@ -89,8 +89,8 @@ program
         select({
           message: "Choose Tailwind setup:",
           choices: [
-            { name: "Vite (recommended)", value: "vite" },
-            { name: "PostCSS (traditional)", value: "postcss" },
+            { name: "Vite (recommended for modern JS frameworks)", value: "vite" },
+            { name: "PostCSS (traditional build pipeline)", value: "postcss" },
           ],
         })
       );
