@@ -1,12 +1,14 @@
 {
-  "name": "postcss-ts",
+  "name": "postcss-js",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/main.js",
   "scripts": {
-    "build": "postcss src/style.css -o dist/style.css",
-    "watch": "postcss src/style.css -o dist/style.css --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "postcss src/style.css -o dist/style.css",
+    "watch:css": "postcss src/style.css -o dist/style.css --watch",
+    "build": "npm run build:css",
+    "dev": "npm run watch:css"
   },
   "keywords": [],
   "author": "",
