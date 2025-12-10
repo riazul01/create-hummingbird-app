@@ -1,4 +1,4 @@
-# Hummingbird UI Template (PostCSS + Tailwind CSS)
+# Hummingbird UI Template (PostCSS + JavaScript + Tailwind CSS)
 
 A lightweight starter template for building modern web projects with Tailwind CSS, PostCSS, and Hummingbird UI.
 
