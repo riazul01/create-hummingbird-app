@@ -40,7 +40,7 @@ You can also specify a folder name:
 
 <br/>
 
-#### Skip all prompts → `-y, --yes`
+#### Skip all prompts `-y, --yes`
 
 Use defaults and setup the template instantly.
 
@@ -60,7 +60,7 @@ Specify a project directory:
 
 <br/>
 
-#### Choose a template directly → `-t, --template <name>`
+#### Choose a template directly `-t, --template <name>`
 
 This bypasses all template-related prompts.
 
@@ -83,7 +83,7 @@ Specify directory as well:
 
 <br/>
 
-#### Force TypeScript → `--ts`
+#### Force TypeScript `--ts`
 
 If you want TypeScript but still want interactive mode:
 
@@ -100,7 +100,7 @@ Combine with a project directory:
 <br/>
 
 
-#### Full help and reference → `-h, --help`
+#### Full help and reference `-h, --help`
 
 Show help information, including all available flags and usage examples.
 

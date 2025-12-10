@@ -28,7 +28,7 @@ async function safePrompt(promise) {
 }
 
 program
-  .version("1.0.5")
+  .version("1.0.6")
   .argument("[project-name]", "optional project name")
   .option("-y, --yes", "skip all prompts and use defaults")
   .option(
