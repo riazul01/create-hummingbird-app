@@ -1,4 +1,4 @@
-# Create Hummingbird App (Test)
+# Create Hummingbird App
 
 A fast and flexible CLI tool to scaffold new projects using the **[Hummingbird UI](https://hbui.dev/)** + **[Tailwind CSS](https://tailwindcss.com/)** starter templates.
 

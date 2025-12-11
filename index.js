@@ -28,7 +28,7 @@ async function safePrompt(promise) {
 }
 
 program
-  .version("1.0.6")
+  .version("1.0.7")
   .argument("[project-name]", "optional project name")
   .option("-y, --yes", "skip all prompts and use defaults")
   .option(
@@ -39,11 +39,11 @@ program
   .action(async (projectName, options) => {
     if (!projectName) {
       projectName = options.yes
-        ? "my-hummingbird-app"
+        ? "my-app"
         : await safePrompt(
             input({
               message: "What is your project named?",
-              default: "my-hummingbird-app",
+              default: "my-app",
             })
           );
     }
@@ -99,8 +99,8 @@ program
         select({
           message: "Select a variant:",
           choices: [
-            { name: "TypeScript", value: "ts" },
             { name: "JavaScript", value: "js" },
+            { name: "TypeScript", value: "ts" },
           ],
         })
       );
